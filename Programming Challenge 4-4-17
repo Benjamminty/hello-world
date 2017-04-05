@@ -1,0 +1,8 @@
+#A program which will be rewritten many time
+#For learning purposes only
+#By Ben Miller, April 2017
+
+num1 = input('Add this number:')
+num2 = input('To this number:')
+
+print('The value of the sum is', (int(num1) + int(num2)))
