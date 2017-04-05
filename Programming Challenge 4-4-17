@@ -1,8 +1,15 @@
-#A program which will be rewritten many time
-#For learning purposes only
-#By Ben Miller, April 2017
+#Area of a Triangle
 
-num1 = input('Add this number:')
-num2 = input('To this number:')
+print('WELCOME TO AREA OF A TRIANGLE')
+print()
+print('Triangles are very important, you know.')
+print()
 
-print('The value of the sum is', (int(num1) + int(num2)))
+trickQuestion = input('How many sides does your triangle have?')
+if trickQuestion != '3':
+    print('You\'re a dumb dick, you know that?')
+    
+print()
+base = input('How wide is the base?')
+height = input('How tall is the triangle?')
+print('Your triangle has an area of ', (.5*int(base)*int(height)))
