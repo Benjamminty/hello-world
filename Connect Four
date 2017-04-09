@@ -1,0 +1,135 @@
+
+# CONNECT FOUR
+# A Simple Python Game for the Learning
+# Benjamin Miller, April 2017
+
+
+#Global Variables
+
+global end
+
+class Board (object):
+
+    matrix = [[]]
+    
+    def __init__(self):
+
+        self.matrix = [
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0]]
+
+    #printBoard
+    #__This function displays the game board onto the terminal.
+    #__Board is 7(h)x6(v)
+    #__Called upon setup and after every move by a player.
+    def printBoard (self):
+        for y in range(0,5):
+            print('|', end='')
+            for x in range(0,6):
+                if (self.matrix[x][y] == 1): print(' X ', end='')
+                elif (self.matrix[x][y] == 2): print(' O ', end='')
+                else: print('   ', end ='')
+            print('|')
+    
+    #pass in coordinates to get state of that spot on board.
+    def find(self, i, j):
+        return self.matrix[i][j]
+
+    #pass in column (i) that you want the piece placed in.
+    #column must be not full for this function to work.
+    
+    def placePiece(self, i, player):
+        x = 0
+        j = 5
+        while (x != 1):
+            if (self.matrix[i][j] == 0):
+                self.matrix[i][j] = player
+                x = 1
+            else: j-= 1   
+
+#playerMove
+#__This function handles the players' moves
+    
+def playerMove (player):
+    if(player == 1):
+        print('Player One:')
+    else: print('Player Two: ')
+    print('Choose a column to place your piece')
+    columnChoice = int(input()) -1 
+    #check for column fullness
+    if (board.find(columnChoice,0) != 0):
+        print('That column is full. Please try another.')
+        playerMove(player)
+    elif (columnChoice > 5 | columnChoice > -1):
+        print('That column does not exist. Please try another.')
+    else:
+        board.placePiece(columnChoice, player)
+
+    board.printBoard()
+    checkForEnd()
+
+        
+    return
+
+#checkForEnd
+#__This function checks the board for end game conditions,
+#__such as player 1 win, player 2 win, or tie (board is full).
+#__Called after every move.
+
+def checkForEnd ( ):
+
+    #check for board fullness
+    fullCols = 0
+    for x in range(0,6):
+        if (board.find(x,0) != 0): fullCols += 1
+    if (fullCols == 7):
+        print('TIE GAME ----------------')
+        print('You both lose... losers')
+        end = 1
+    
+    return
+
+
+#AIMove
+#__This function handles the AI's decision making.
+#__Called instead of playerTwoMove if game is one-player.
+    
+def AIMove ( ):
+
+    return
+
+#endGame
+#__This function displays the winner of the game or declares the game a tie
+#__Only called by checkForEnd
+
+def endGame ( ):
+
+    return
+
+def main ( ):
+    #Intialize game and board
+    print('Welcome to Connect Four!!')
+    print('')
+    print('How many players? Please enter 1 or 2.')
+    GameMode = input()
+
+    board.printBoard ()
+    end = 0
+    player = 1
+    #Run the game
+    while (end == 0) :
+        playerMove (player)
+
+        if (GameMode == 1): AIMove ( )
+        elif (player == 1): player = 2
+        else: player = 1
+    return
+
+
+board = Board();
+main()
+
