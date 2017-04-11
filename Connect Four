@@ -14,12 +14,13 @@ class Board (object):
     def __init__(self):
 
         self.matrix = [
-            [0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0]]
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0]]
 
     #printBoard
     #__This function displays the game board onto the terminal.
@@ -34,7 +35,7 @@ class Board (object):
         # draw the board
         for y in range(0,6):
             print('|', end='')
-            for x in range(0,6):
+            for x in range(0,7):
                 if (self.matrix[x][y] == 1): print(' X ', end='')
                 elif (self.matrix[x][y] == 2): print(' O ', end='')
                 else: print('   ', end ='')
@@ -43,7 +44,7 @@ class Board (object):
             
         # whitespace
         print('\n'*15)
-        
+ 
     # pass in coordinates to get state of that spot on board.
     def find(self, i, j):
         return self.matrix[i][j]
@@ -73,7 +74,7 @@ def playerMove (player):
 
     # check for input validity.
 
-    if (columnChoice > 5 or columnChoice < 0):
+    if (columnChoice > 6 or columnChoice < 0):
         print('That column does not exist. Please try another.')
         playerMove(player)
     elif (board.find(columnChoice,0) != 0):
@@ -136,10 +137,3 @@ while (end == False) :
 
     playerMove (player)
     end = checkForEnd( )
-
-
-
-
-
-
-
